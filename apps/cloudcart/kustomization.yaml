@@ -15,3 +15,7 @@ resources:
   - product-service/product-service-configmap.yaml
   - product-service/product-service-deployment.yaml
   - product-service/product-service-service.yaml
+  - order-service/order-service-secret.yaml
+  - order-service/order-service-configmap.yaml
+  - order-service/order-service-deployment.yaml
+  - order-service/order-service-service.yaml

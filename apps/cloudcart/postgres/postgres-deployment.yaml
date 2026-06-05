@@ -3,7 +3,7 @@ kind: Deployment
 
 metadata:
   name: postgres
-  namespace: cloudcart
+  namespace: cloudcart-dev
 
 spec:
   replicas: 1

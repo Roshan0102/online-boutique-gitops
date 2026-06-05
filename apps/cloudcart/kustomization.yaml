@@ -12,3 +12,6 @@ resources:
   - user-service/user-service-configmap.yaml
   - user-service/user-service-deployment.yaml
   - user-service/user-service-service.yaml
+  - product-service/product-service-configmap.yaml
+  - product-service/product-service-deployment.yaml
+  - product-service/product-service-service.yaml

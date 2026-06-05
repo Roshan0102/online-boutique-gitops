@@ -6,3 +6,5 @@ resources:
   - postgres/postgres-secret.yaml
   - postgres/postgres-pvc.yaml
   - postgres/postgres-configmap.yaml
+  - postgres/postgres-deployment.yaml
+  - postgres/postgres-service.yaml

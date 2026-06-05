@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: user-service-config
+  namespace: cloudcart-dev
+
+data:
+  PORT: "5001"
+
+  DB_HOST: "postgres"
+
+  DB_PORT: "5432"
+
+  DB_USER: "postgres"
+
+  DB_NAME: "cloudcart_users"

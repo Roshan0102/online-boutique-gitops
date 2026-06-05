@@ -8,3 +8,7 @@ resources:
   - postgres/postgres-configmap.yaml
   - postgres/postgres-deployment.yaml
   - postgres/postgres-service.yaml
+  - user-service/user-service-secret.yaml
+  - user-service/user-service-configmap.yaml
+  - user-service/user-service-deployment.yaml
+  - user-service/user-service-service.yaml

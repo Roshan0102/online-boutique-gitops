@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: online-boutique-dev
+  name: cloudcart-dev
   namespace: argocd
 
 spec:
@@ -13,12 +13,12 @@ spec:
 
     targetRevision: main
 
-    path: apps/online-boutique
+    path: apps/cloudcart
 
   destination:
     server: https://kubernetes.default.svc
 
-    namespace: online-boutique-dev
+    namespace: cloudcart-dev
 
   syncPolicy:
     automated:

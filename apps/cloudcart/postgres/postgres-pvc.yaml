@@ -6,6 +6,8 @@ metadata:
   namespace: cloudcart-dev
 
 spec:
+  storageClassName: gp2
+
   accessModes:
     - ReadWriteOnce
 

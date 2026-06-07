@@ -21,7 +21,7 @@ spec:
       containers:
         - name: frontend
 
-          image: roshan033/cloudcart-frontend:v2
+          image: roshan033/cloudcart-frontend:v3
 
           imagePullPolicy: Always
 

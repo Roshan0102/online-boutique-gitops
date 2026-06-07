@@ -1,0 +1,54 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+
+metadata:
+  name: cloudcart-ingress
+  namespace: cloudcart-dev
+
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+
+spec:
+  ingressClassName: nginx
+
+  tls:
+    - hosts:
+        - cloudcart.pramod-leveling.space
+      secretName: cloudcart-tls
+
+  rules:
+    - host: cloudcart.pramod-leveling.space
+
+      http:
+        paths:
+          - path: /api/users
+            pathType: Prefix
+            backend:
+              service:
+                name: user-service
+                port:
+                  number: 5001
+
+          - path: /api/products
+            pathType: Prefix
+            backend:
+              service:
+                name: product-service
+                port:
+                  number: 5002
+
+          - path: /api/orders
+            pathType: Prefix
+            backend:
+              service:
+                name: order-service
+                port:
+                  number: 5003
+
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 3000

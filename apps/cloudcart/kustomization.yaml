@@ -21,3 +21,4 @@ resources:
   - order-service/order-service-service.yaml
   - frontend/frontend-deployment.yaml
   - frontend/frontend-service.yaml
+  - ingress.yaml

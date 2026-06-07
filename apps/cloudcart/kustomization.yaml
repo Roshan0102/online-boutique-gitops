@@ -19,3 +19,5 @@ resources:
   - order-service/order-service-configmap.yaml
   - order-service/order-service-deployment.yaml
   - order-service/order-service-service.yaml
+  - frontend/frontend-deployment.yaml
+  - frontend/frontend-service.yaml

@@ -21,7 +21,7 @@ spec:
       containers:
         - name: user-service
 
-          image: roshan033/cloudcart-user-service:v1
+          image: roshan033/cloudcart-user-service:build-0
 
           imagePullPolicy: Always
 

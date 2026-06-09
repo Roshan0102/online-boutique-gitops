@@ -1,0 +1,21 @@
+grafana:
+  adminPassword: admin123
+
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+
+    hosts:
+      - grafana.pramod-leveling.space
+
+    tls:
+      - secretName: grafana-tls
+        hosts:
+          - grafana.pramod-leveling.space
+
+prometheus:
+  prometheusSpec:
+    retention: 15d
+
+alertmanager:
+  enabled: true

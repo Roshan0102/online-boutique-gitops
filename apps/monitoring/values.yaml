@@ -5,6 +5,9 @@ grafana:
     enabled: true
     ingressClassName: nginx
 
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+
     hosts:
       - grafana.pramod-leveling.space
 
@@ -14,6 +17,21 @@ grafana:
           - grafana.pramod-leveling.space
 
 prometheus:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+
+    hosts:
+      - prometheus.pramod-leveling.space
+
+    tls:
+      - secretName: prometheus-tls
+        hosts:
+          - prometheus.pramod-leveling.space
+
   prometheusSpec:
     retention: 15d
 

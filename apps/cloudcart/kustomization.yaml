@@ -22,3 +22,7 @@ resources:
   - frontend/frontend-deployment.yaml
   - frontend/frontend-service.yaml
   - ingress.yaml
+  - frontend/frontend-hpa.yaml
+  - user-service/user-service-hpa.yaml
+  - product-service/product-service-hpa.yaml
+  - order-service/order-service-hpa.yaml

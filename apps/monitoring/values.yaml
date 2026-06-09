@@ -51,6 +51,40 @@ alertmanager:
         hosts:
           - alertmanager.pramod-leveling.space
 
+  config:
+    global:
+      resolve_timeout: 5m
+
+    route:
+      receiver: slack-notifications
+
+      group_by:
+        - alertname
+
+      group_wait: 10s
+      group_interval: 30s
+      repeat_interval: 1h
+
+    receivers:
+      - name: slack-notifications
+
+        slack_configs:
+          - api_url: "https://hooks.slack.com/services/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"
+
+            channel: "#cloudcart-alerts"
+
+            send_resolved: true
+
+            title: "{{ .CommonLabels.alertname }}"
+
+            text: |
+              Alert: {{ .CommonLabels.alertname }}
+
+              Severity: {{ .CommonLabels.severity }}
+
+              Description:
+              {{ .CommonAnnotations.description }}
+
 kubeStateMetrics:
   enabled: true
 

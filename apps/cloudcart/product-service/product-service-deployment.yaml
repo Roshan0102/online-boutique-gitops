@@ -21,7 +21,7 @@ spec:
       containers:
         - name: product-service
 
-          image: roshan033/cloudcart-product-service:build-0
+          image: roshan033/cloudcart-product-service:build-20
 
           imagePullPolicy: Always
 

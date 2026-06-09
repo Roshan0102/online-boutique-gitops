@@ -36,7 +36,20 @@ prometheus:
     retention: 15d
 
 alertmanager:
-  enabled: true
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+
+    hosts:
+      - alertmanager.pramod-leveling.space
+
+    tls:
+      - secretName: alertmanager-tls
+        hosts:
+          - alertmanager.pramod-leveling.space
 
 kubeStateMetrics:
   enabled: true

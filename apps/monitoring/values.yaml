@@ -69,7 +69,7 @@ alertmanager:
       - name: slack-notifications
 
         slack_configs:
-          - api_url: "https://hooks.slack.com/services/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"
+          - api_url: "https://hooks.slack.com/services/T0B9E5U5H5X/XXXXXXXXXXXXXXXXXXX"
 
             channel: "#cloudcart-alerts"
 

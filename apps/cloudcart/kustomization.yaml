@@ -6,23 +6,35 @@ resources:
   - postgres/postgres-secret.yaml
   - postgres/postgres-pvc.yaml
   - postgres/postgres-configmap.yaml
-  - postgres/postgres-deployment.yaml
+  - postgres/postgres-statefulset.yaml
   - postgres/postgres-service.yaml
+  - postgres/postgres-networkpolicy.yaml
   - user-service/user-service-secret.yaml
   - user-service/user-service-configmap.yaml
   - user-service/user-service-deployment.yaml
   - user-service/user-service-service.yaml
+  - user-service/user-service-networkpolicy.yaml
   - product-service/product-service-configmap.yaml
   - product-service/product-service-deployment.yaml
   - product-service/product-service-service.yaml
+  - product-service/product-service-networkpolicy.yaml
   - order-service/order-service-secret.yaml
   - order-service/order-service-configmap.yaml
   - order-service/order-service-deployment.yaml
   - order-service/order-service-service.yaml
+  - order-service/order-service-networkpolicy.yaml
   - frontend/frontend-deployment.yaml
   - frontend/frontend-service.yaml
+  - frontend/frontend-networkpolicy.yaml
   - ingress.yaml
   - frontend/frontend-hpa.yaml
   - user-service/user-service-hpa.yaml
   - product-service/product-service-hpa.yaml
   - order-service/order-service-hpa.yaml
+  - karpenter/karpenter-namespace.yaml
+  - karpenter/karpenter-crds.yaml
+  - karpenter/karpenter.yaml
+  - karpenter/karpenter-config.yaml
+  - kyverno/kyverno-namespace.yaml
+  - kyverno/kyverno.yaml
+  - kyverno/kyverno-policies.yaml

@@ -1,6 +1,12 @@
 grafana:
   adminPassword: admin123
 
+  persistence:
+    enabled: true
+    type: pvc
+    storageClassName: gp2
+    size: 10Gi
+
   ingress:
     enabled: true
     ingressClassName: nginx
@@ -35,6 +41,18 @@ prometheus:
   prometheusSpec:
     retention: 15d
 
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: gp2
+
+          accessModes:
+            - ReadWriteOnce
+
+          resources:
+            requests:
+              storage: 20Gi
+
 alertmanager:
   ingress:
     enabled: true
@@ -51,39 +69,18 @@ alertmanager:
         hosts:
           - alertmanager.pramod-leveling.space
 
-  config:
-    global:
-      resolve_timeout: 5m
+  alertmanagerSpec:
+    storage:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: gp2
 
-    route:
-      receiver: slack-notifications
+          accessModes:
+            - ReadWriteOnce
 
-      group_by:
-        - alertname
-
-      group_wait: 10s
-      group_interval: 30s
-      repeat_interval: 1h
-
-    receivers:
-      - name: slack-notifications
-
-        slack_configs:
-          - api_url: "https://hooks.slack.com/services/T0B9E5U5H5X/XXXXXXXXXXXXXXXXXXX"
-
-            channel: "#cloudcart-alerts"
-
-            send_resolved: true
-
-            title: "{{ .CommonLabels.alertname }}"
-
-            text: |
-              Alert: {{ .CommonLabels.alertname }}
-
-              Severity: {{ .CommonLabels.severity }}
-
-              Description:
-              {{ .CommonAnnotations.description }}
+          resources:
+            requests:
+              storage: 5Gi
 
 kubeStateMetrics:
   enabled: true

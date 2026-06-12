@@ -8,9 +8,13 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/Roshan0102/online-boutique-gitops.git
-    targetRevision: main
-    path: apps/logging
+    repoURL: https://grafana.github.io/helm-charts
+    chart: loki-stack
+    targetRevision: 2.10.2
+
+    helm:
+      valueFiles:
+        - values.yaml
 
   destination:
     server: https://kubernetes.default.svc

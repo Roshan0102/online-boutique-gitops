@@ -3,11 +3,23 @@ deploymentMode: SingleBinary
 singleBinary:
   replicas: 1
 
+backend:
+  replicas: 0
+
+read:
+  replicas: 0
+
+write:
+  replicas: 0
+
 loki:
   auth_enabled: false
 
   commonConfig:
     replication_factor: 1
+
+  storage:
+    type: filesystem
 
   schemaConfig:
     configs:
@@ -22,15 +34,6 @@ loki:
 
 gateway:
   enabled: true
-
-backend:
-  replicas: 0
-
-read:
-  replicas: 0
-
-write:
-  replicas: 0
 
 chunksCache:
   enabled: false

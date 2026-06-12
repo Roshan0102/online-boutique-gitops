@@ -1,6 +1,5 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
-
 metadata:
   name: logging
   namespace: argocd
@@ -8,27 +7,16 @@ metadata:
 spec:
   project: default
 
+  source:
+    repoURL: https://github.com/Roshan0102/online-boutique-gitops.git
+    targetRevision: main
+    path: apps/logging
+
   destination:
     server: https://kubernetes.default.svc
     namespace: logging
-
-  sources:
-    - repoURL: https://grafana.github.io/helm-charts
-      chart: loki-stack
-      targetRevision: 2.10.2
-
-      helm:
-        valueFiles:
-          - $values/apps/logging/values.yaml
-
-    - repoURL: https://github.com/Roshan0102/online-boutique-gitops.git
-      targetRevision: main
-      ref: values
 
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-
-    syncOptions:
-      - CreateNamespace=true

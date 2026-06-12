@@ -1,0 +1,189 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "graphTooltip": 0,
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Frontend Pod Count",
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "expr": "count(kube_pod_info{namespace=\"cloudcart-dev\", pod=~\"frontend.*\"})"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "User Service Pod Count",
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 0
+      },
+      "targets": [
+        {
+          "expr": "count(kube_pod_info{namespace=\"cloudcart-dev\", pod=~\"user-service.*\"})"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Product Service Pod Count",
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 12,
+        "y": 0
+      },
+      "targets": [
+        {
+          "expr": "count(kube_pod_info{namespace=\"cloudcart-dev\", pod=~\"product-service.*\"})"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Order Service Pod Count",
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 18,
+        "y": 0
+      },
+      "targets": [
+        {
+          "expr": "count(kube_pod_info{namespace=\"cloudcart-dev\", pod=~\"order-service.*\"})"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "CPU Usage by Service",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 4
+      },
+      "targets": [
+        {
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"cloudcart-dev\",pod=~\"frontend.*\"}[5m]))",
+          "legendFormat": "Frontend"
+        },
+        {
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"cloudcart-dev\",pod=~\"user-service.*\"}[5m]))",
+          "legendFormat": "User"
+        },
+        {
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"cloudcart-dev\",pod=~\"product-service.*\"}[5m]))",
+          "legendFormat": "Product"
+        },
+        {
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"cloudcart-dev\",pod=~\"order-service.*\"}[5m]))",
+          "legendFormat": "Order"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Memory Usage (MiB) by Service",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 4
+      },
+      "targets": [
+        {
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"cloudcart-dev\",pod=~\"frontend.*\"})/1024/1024",
+          "legendFormat": "Frontend"
+        },
+        {
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"cloudcart-dev\",pod=~\"user-service.*\"})/1024/1024",
+          "legendFormat": "User"
+        },
+        {
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"cloudcart-dev\",pod=~\"product-service.*\"})/1024/1024",
+          "legendFormat": "Product"
+        },
+        {
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"cloudcart-dev\",pod=~\"order-service.*\"})/1024/1024",
+          "legendFormat": "Order"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "HPA Current Replicas",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 12
+      },
+      "targets": [
+        {
+          "expr": "kube_horizontalpodautoscaler_status_current_replicas{horizontalpodautoscaler=\"frontend-hpa\"}",
+          "legendFormat": "Frontend"
+        },
+        {
+          "expr": "kube_horizontalpodautoscaler_status_current_replicas{horizontalpodautoscaler=\"user-service-hpa\"}",
+          "legendFormat": "User"
+        },
+        {
+          "expr": "kube_horizontalpodautoscaler_status_current_replicas{horizontalpodautoscaler=\"product-service-hpa\"}",
+          "legendFormat": "Product"
+        },
+        {
+          "expr": "kube_horizontalpodautoscaler_status_current_replicas{horizontalpodautoscaler=\"order-service-hpa\"}",
+          "legendFormat": "Order"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "PostgreSQL Resource Usage",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 12
+      },
+      "targets": [
+        {
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"cloudcart-dev\",pod=~\"postgres.*\"}[5m]))",
+          "legendFormat": "Postgres CPU"
+        },
+        {
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"cloudcart-dev\",pod=~\"postgres.*\"})/1024/1024",
+          "legendFormat": "Postgres Memory MiB"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 39,
+  "style": "dark",
+  "tags": [
+    "cloudcart",
+    "kubernetes",
+    "eks"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "title": "CloudCart Application Dashboard",
+  "version": 1
+}

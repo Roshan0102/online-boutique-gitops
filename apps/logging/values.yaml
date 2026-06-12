@@ -1,0 +1,13 @@
+loki:
+  enabled: true
+
+  persistence:
+    enabled: true
+    storageClassName: gp2
+    size: 10Gi
+
+promtail:
+  enabled: true
+
+grafana:
+  enabled: false

@@ -1,5 +1,6 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
+
 metadata:
   name: logging
   namespace: argocd
@@ -15,6 +16,16 @@ spec:
       helm:
         valueFiles:
           - $values/apps/logging/values.yaml
+
+    - repoURL: https://grafana.github.io/helm-charts
+      chart: promtail
+      targetRevision: 6.17.0
+
+      helm:
+        values: |
+          config:
+            clients:
+              - url: http://logging-loki-gateway.logging.svc.cluster.local/loki/api/v1/push
 
     - repoURL: https://github.com/Roshan0102/online-boutique-gitops.git
       targetRevision: main

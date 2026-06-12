@@ -3,13 +3,11 @@ kind: Kustomization
 
 resources:
   - namespace.yaml
-  - postgres/postgres-secret.yaml
   - postgres/postgres-pvc.yaml
   - postgres/postgres-configmap.yaml
   - postgres/postgres-statefulset.yaml
   - postgres/postgres-service.yaml
   - postgres/postgres-networkpolicy.yaml
-  - user-service/user-service-secret.yaml
   - user-service/user-service-configmap.yaml
   - user-service/user-service-deployment.yaml
   - user-service/user-service-service.yaml
@@ -18,7 +16,6 @@ resources:
   - product-service/product-service-deployment.yaml
   - product-service/product-service-service.yaml
   - product-service/product-service-networkpolicy.yaml
-  - order-service/order-service-secret.yaml
   - order-service/order-service-configmap.yaml
   - order-service/order-service-deployment.yaml
   - order-service/order-service-service.yaml
@@ -38,3 +35,4 @@ resources:
   - kyverno/kyverno-namespace.yaml
   - kyverno/kyverno.yaml
   - kyverno/kyverno-policies.yaml
+  - external-secrets

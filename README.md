@@ -26,7 +26,7 @@ Welcome to the **GitOps & Application Delivery** repository for the Kubernetes-N
 
 This GitOps repository works hand-in-hand with our infrastructure repository to deliver a fully automated end-to-end cloud platform:
 
-*   🚀 **GitOps Repo (Current):** [Roshan0102/online-boutique-gitops](https://github.com/Roshan0102/online-boutique-gitops)
+*   🚀 **Application Repo:** https://github.com/Roshan0102/online-boutique-app
 *   🏗️ **Infrastructure Repo:** [Roshan0102/eks-platform-infra](https://github.com/Roshan0102/eks-platform-infra)
 
 ## 🛠️ How it Works
